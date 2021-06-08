@@ -5,8 +5,8 @@ export const getProducts = () => async(dispatch:Dispatch) => {
     try{
         dispatch({type: actionTypes.GET_PRODUCTS_REQUEST})
 
-        const data = await fetch('https://murmuring-beyond-43171.herokuapp.com/products')
-
+        const res = await fetch('https://murmuring-beyond-43171.herokuapp.com/products')
+        const data = await res.json();
         dispatch({
             type: actionTypes.GET_PRODUCTS_SUCCESS,
             payload: data
