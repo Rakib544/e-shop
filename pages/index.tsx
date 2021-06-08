@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
+import Footer from '../components/Footer/Footer';
 import NavBar from '../components/Navbar/Navbar';
 import Preloader from '../components/Preloader/Preloader';
 import { SingleCard } from '../components/SingleCard/SingleCard';
@@ -50,6 +51,7 @@ export default function Home(): JSX.Element {
             </section>
           )
       }
+      <Footer />
     </div>
   )
 
