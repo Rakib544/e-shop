@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import NavBar from '../components/Navbar/Navbar';
+import Preloader from '../components/SingleCard/Preloader/Preloader';
 import { SingleCard } from '../components/SingleCard/SingleCard';
 import { getProducts } from '../redux/actions/productActions';
-import styles from '../styles/Home.module.css';
 
 export type Products = {
   features: {}[];
@@ -38,13 +38,14 @@ export default function Home(): JSX.Element {
       <NavBar />
       {
         loading
-          ? <h3>Loading...</h3>
+          ? <Preloader />
           : (
-            <section className="md:h-full flex items-center text-gray-600">
-              <div className="container px-5 py-24 mx-auto" >
+            <section className="md:h-full flex items-center bg-gray-100 text-gray-600">
+              <div className="container px-10 sm:px-2 py-14 mx-auto" >
+                <p className="font-bold text-3xl pb-8">Latest Products</p>
                 <div className="flex flex-wrap -m-4" >
                   {
-                    products.map(product => <SingleCard product={product} />)
+                    products?.map(product => <SingleCard product={product} />)
                   }
                 </div>
               </div>
