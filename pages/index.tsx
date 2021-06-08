@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
+import NavBar from '../components/Navbar/Navbar';
 import { getProducts } from '../redux/actions/productActions';
 import styles from '../styles/Home.module.css';
 
@@ -31,13 +32,18 @@ export default function Home(): JSX.Element {
   const { loading, error, products } = data;
 
   return (
-    loading
-      ? <h3>Loading...</h3>
-      : <div>
-        {
-          products.map(product => <h2>{product.name}</h2>)
-        }
-      </div>
+    <div>
+      <NavBar />
+      {
+        loading
+          ? <h3>Loading...</h3>
+          : <div>
+            {
+              products.map(product => <h2>{product.name}</h2>)
+            }
+          </div>
+      }
+    </div>
   )
 
 }
