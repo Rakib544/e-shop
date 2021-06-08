@@ -3,14 +3,16 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import NavBar from '../components/Navbar/Navbar';
+import { SingleCard } from '../components/SingleCard/SingleCard';
 import { getProducts } from '../redux/actions/productActions';
 import styles from '../styles/Home.module.css';
 
-interface Products {
+export type Products = {
   features: {}[];
   img: string;
   key: string;
   name: string;
+  price: number;
   priceFraction: string;
   seller: string;
   shipping: number;
@@ -37,11 +39,17 @@ export default function Home(): JSX.Element {
       {
         loading
           ? <h3>Loading...</h3>
-          : <div>
-            {
-              products.map(product => <h2>{product.name}</h2>)
-            }
-          </div>
+          : (
+            <section className="md:h-full flex items-center text-gray-600">
+              <div className="container px-5 py-24 mx-auto" >
+                <div className="flex flex-wrap -m-4" >
+                  {
+                    products.map(product => <SingleCard product={product} />)
+                  }
+                </div>
+              </div>
+            </section>
+          )
       }
     </div>
   )

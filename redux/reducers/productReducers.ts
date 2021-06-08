@@ -10,7 +10,7 @@ export const getProductReducers = (state = { products: []}, action) => {
         case actionTypes.GET_PRODUCTS_SUCCESS: 
             return {
                 loading: false,
-                products: action.payload
+                products: action.payload.slice(0,5)
             }
         case actionTypes.GET_PRODUCTS_FAIL: 
             return {
