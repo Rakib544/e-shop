@@ -25,12 +25,14 @@ export const getProductDetails = id => async (dispatch) => {
     try{
         dispatch({type: actionTypes.GET_PRODUCT_DETAILS_REQUEST})
 
-        const data = await fetch(`https://murmuring-beyond-43171.herokuapp.com/products/${id}`)
-
+        const res = await fetch(`https://murmuring-beyond-43171.herokuapp.com/product/${id}`)
+        const data = await res.json()
+        
         dispatch({
         type: actionTypes.GET_PRODUCT_DETAILS_SUCCESS,
         payload: data
         })
+        
     }catch(error) {
         dispatch({
             type: actionTypes.GET_PRODUCT_DETAILS_FAIL,

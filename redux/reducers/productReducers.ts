@@ -31,7 +31,7 @@ export const getProductDetailsReducer = (state = {product: {}}, action) => {
         case actionTypes.GET_PRODUCT_DETAILS_SUCCESS: 
             return {
                 loading: false,
-                payload: action.payload
+                product: action.payload
             }
         case actionTypes.GET_PRODUCT_DETAILS_FAIL: 
             return {

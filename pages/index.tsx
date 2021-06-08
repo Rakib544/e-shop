@@ -44,7 +44,7 @@ export default function Home(): JSX.Element {
                 <p className="font-bold text-3xl pb-8">Latest Products</p>
                 <div className="flex flex-wrap -m-4" >
                   {
-                    products?.map(product => <SingleCard product={product} />)
+                    products?.map(product => <SingleCard key={product._id} product={product} />)
                   }
                 </div>
               </div>
