@@ -1,9 +1,7 @@
 import * as actionTypes from '../constants/cartConstants';
 
-export const addToCart = (id) => async (dispatch, getState) => {
-    const res = await fetch('https://murmuring-beyond-43171.herokuapp.com/products')
-    const data = await res.json();
-
+export const addToCart = (data) => async (dispatch, getState) => {
+    console.log(data)
     dispatch({
         type: actionTypes.ADD_TO_CART,
         payload: data
