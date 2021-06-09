@@ -30,7 +30,7 @@ const Cart: React.FC = () => {
                     </div>
                     <div className="p-2 w-full sm:w-full lg:w-1/4">
                         <h2 className="text-lg font-bold">Sub-Total ({products?.length}) Items</h2>
-                        <p className="text-lg mt-4 font-medium">${subTotal}</p>
+                        <p className="text-lg mt-4 font-medium">${subTotal.toFixed(2)}</p>
                         <button className="bg-gray-800 text-white w-full py-3 mt-4 text-xs tracking-wide">PROCEED TO CHECKOUT</button>
                     </div>
                 </div>
