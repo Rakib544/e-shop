@@ -24,7 +24,7 @@ export const cartReducers = (state = { cartItems: [] }, action) => {
         case actionTypes.REMOVE_FROM_CART:
             return {
                 ...state,
-                cartItems: state.cartItems.filter(x => x.product !== action.payload)
+                cartItems: state.cartItems.filter(x => x._id !== action.payload)
             }
 
         case actionTypes.LOAD_DATA_FROM_LOCAL_STORAGE: 
