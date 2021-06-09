@@ -4,6 +4,7 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import Preloader from '../../components/Preloader/Preloader';
 import { addToCart } from '../../redux/actions/cartActions';
 import { getProductDetails } from '../../redux/actions/productActions';
+
 const ProductDetails: React.FC = () => {
     const router = useRouter()
     const dispatch = useDispatch()
@@ -27,7 +28,7 @@ const ProductDetails: React.FC = () => {
                         <div className="container-lg px-8 py-14 mx-auto">
                             <div className="flex flex-wrap -m-4">
                                 <div className="p-2 sm:w-1/2 lg:w-1/3" >
-                                    <img className="w-full h-full" src={product.img} alt={product.name} />
+                                    <img className="w-full h-full" src={product?.img} alt={product.name} />
                                 </div>
                                 <div className="p-2 sm:w-1/2 lg:w-1/3" >
                                     <h2 className="text-lg font-medium tracking-wide py-4">{product.name}</h2>
