@@ -13,20 +13,22 @@ const Cart: React.FC = () => {
     }, [])
 
     const products = useSelector((state: RootStateOrAny) => state.cart.cartItems)
+    const subTotal = products?.reduce((sum, product) => sum + product.price, 0)
+
     return (
         <>
             <NavBar />
-            <div className="px-10 sm:px-2 md:px-8 lg:px-10 py-10">
-                <div className="flex flex-wrap -m-4 justify-between">
-                    <div className="p-2 sm:w-1/2 md:w-1/2 order-2 sm:order-2 lg:order-1">
+            <div className="px-2 sm:px-2 md:px-8 lg:px-10 py-10">
+                <div className="flex flex-wrap justify-between">
+                    <div className="px-0 sm:px-0 md:px-12 w-full sm:w-full md:w-3/4 lg:w-3/4">
                         {
                             products?.map(product => <SingleCart product={product} key={product._id} />)
                         }
                     </div>
-                    <div className="p-2 w-full sm:w-full lg:w-1/4 order-1 sm:order-1 lg:order-2">
-                        <h2 className="text-2xl">Sub-Total (0) Items</h2>
-                        <p className="text-lg mt-4 font-medium">$656</p>
-                        <button className="bg-gray-800 text-white w-full py-3 mt-4">Proceed To Checkout</button>
+                    <div className="p-2 w-full sm:w-full lg:w-1/4">
+                        <h2 className="text-lg font-bold">Sub-Total ({products?.length}) Items</h2>
+                        <p className="text-lg mt-4 font-medium">${subTotal}</p>
+                        <button className="bg-gray-800 text-white w-full py-3 mt-4 text-xs tracking-wide">PROCEED TO CHECKOUT</button>
                     </div>
                 </div>
 

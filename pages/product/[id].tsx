@@ -20,6 +20,11 @@ const ProductDetails: React.FC = () => {
     });
 
     const { product, loading, error } = state;
+
+    const cartProduct = {
+        ...product,
+        qty: 1
+    }
     return (
         <div>
             <NavBar />
@@ -28,7 +33,7 @@ const ProductDetails: React.FC = () => {
                     ? <Preloader />
                     : (
                         <div className="h:screen container-lg px-8 py-14 mx-auto">
-                            <div className="flex flex-wrap -m-4">
+                            <div className="flex flex-wrap justify-between m-4">
                                 <div className="p-2 sm:w-1/2 lg:w-1/3" >
                                     <img className="w-full h-full" src={product?.img} alt={product.name} />
                                 </div>
@@ -47,7 +52,12 @@ const ProductDetails: React.FC = () => {
                                             <p>Status</p>
                                             <p>{product.stock ? 'In Stock' : 'Out Of Stock'}</p>
                                         </div>
-                                        <button onClick={() => dispatch(addToCart(product))} className="bg-gray-900 text-white w-full py-3 mt-10 hover:bg-opacity-80 rounded">ADD TO CART</button>
+                                        <button 
+                                            onClick={() => dispatch(addToCart(cartProduct))} 
+                                            className="bg-gray-900 text-white text-xs w-full py-3 mt-10 hover:bg-opacity-80 tracking-wide"
+                                        >
+                                            ADD TO CART
+                                        </button>
                                     </div>
                                 </div>
                             </div>

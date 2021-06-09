@@ -41,7 +41,9 @@ export default function Home(): JSX.Element {
           : (
             <section className="md:h-full flex items-center bg-gray-100 text-gray-600">
               <div className="container px-10 py-14 mx-auto" >
-                <p className="font-bold text-3xl pb-8">Latest Products</p>
+                <p className="font-bold text-3xl pb-8">
+                  Latest Products
+                </p>
                 <div className="flex flex-wrap -m-4" >
                   {
                     products?.map(product => <SingleCard key={product._id} product={product} />)
