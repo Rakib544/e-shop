@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Products } from "../../pages"
+
 type Props = {
     product: Products,
-
 }
-export const SingleCard: React.FC<Props> = ({ product }) => {
 
+export const SingleCard: React.FC<Props> = ({ product }) => {
     return (
         <Link href={`product/${product.key}`}>
             <div className="p-2 sm:w-1/2 lg:w-1/4 cursor-pointer rounded-sm" >

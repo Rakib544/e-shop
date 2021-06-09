@@ -22,7 +22,7 @@ export default function NavBar() {
                     <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                         <div className="relative flex items-center justify-between h-16">
                             <div>
-                                <h2 className="text-white text-2xl font-medium font-italic">E-shop</h2>
+                                <h2 onClick={() => router.push('/')} className="text-white text-2xl font-medium font-italic cursor-pointer">E-shop</h2>
                             </div>
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                 <button onClick={() => router.push('/cart')} className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none flex mx-2">
