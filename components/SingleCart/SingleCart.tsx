@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Products } from '../../pages';
-import { removeFromCart } from '../../redux/actions/cartActions';
+import { incrementorDecrementQty, removeFromCart } from '../../redux/actions/cartActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 
@@ -9,13 +8,24 @@ type Props = {
     product: Products
 }
 const SingleCart: React.FC<Props> = ({ product }) => {
-    const [totalProduct, setTotalProduct] = useState<number>(1)
     const dispatch = useDispatch();
 
     const handleDecrement = () => {
-        if(totalProduct > 1) {
-            setTotalProduct(totalProduct - 1)
+        if (product.qty > 1) {
+            const data = {
+                ...product,
+                qty: product.qty - 1
+            }
+            dispatch(incrementorDecrementQty(data))
         }
+    }
+
+    const handleIncrement = () => {
+        const data = {
+            ...product,
+            qty: product.qty + 1
+        }
+        dispatch(incrementorDecrementQty(data))
     }
 
     return (
@@ -31,10 +41,10 @@ const SingleCart: React.FC<Props> = ({ product }) => {
             </div>
             <div className="w-1/5 flex justify-center items-center">
                 <button className="mr-3 text-xs md:text-lg" onClick={handleDecrement}>
-                <FontAwesomeIcon icon={faMinus} />
+                    <FontAwesomeIcon icon={faMinus} />
                 </button>
-                <span className="p-2">{totalProduct}</span>
-                <button className="ml-3 text-xs md:text-lg" onClick={() => setTotalProduct(totalProduct + 1)}>
+                <span className="p-2">{product.qty}</span>
+                <button className="ml-3 text-xs md:text-lg" onClick={handleIncrement}>
                     <FontAwesomeIcon icon={faPlus} />
                 </button>
             </div>

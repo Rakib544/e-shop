@@ -3,6 +3,7 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import NavBar from '../components/Navbar/Navbar';
 import SingleCart from '../components/SingleCart/SingleCart';
 import { loadDataFromLocalStorage } from '../redux/actions/cartActions';
+import Link from 'next/link';
 
 
 const Cart: React.FC = () => {
@@ -13,7 +14,7 @@ const Cart: React.FC = () => {
     }, [])
 
     const products = useSelector((state: RootStateOrAny) => state.cart.cartItems)
-    const subTotal = products?.reduce((sum, product) => sum + product.price, 0)
+    const subTotal = products?.reduce((sum, product) => sum + (product.price * product.qty), 0)
 
     return (
         <>
@@ -22,7 +23,9 @@ const Cart: React.FC = () => {
                 <div className="flex flex-wrap justify-between">
                     <div className="px-0 sm:px-0 md:px-12 w-full sm:w-full md:w-3/4 lg:w-3/4">
                         {
-                            products?.map(product => <SingleCart product={product} key={product._id} />)
+                            products.length === 0
+                            ? <h3>You don't have any products on the cart. <Link href="/"><a className="hover:underline">Back to Home</a></Link></h3>
+                            : products?.map(product => <SingleCart product={product} key={product._id} />)
                         }
                     </div>
                     <div className="p-2 w-full sm:w-full lg:w-1/4">

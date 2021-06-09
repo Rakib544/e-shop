@@ -14,8 +14,7 @@ export const loadLocalStorageData = () => {
 
 export const cartReducers = (state = { cartItems: [] }, action) => {
     switch (action.type) {
-        case actionTypes.ADD_TO_CART:
-        
+        case actionTypes.ADD_TO_CART:  
             return {
                 ...state,
                 cartItems: [action.payload, ...state.cartItems]
@@ -33,7 +32,12 @@ export const cartReducers = (state = { cartItems: [] }, action) => {
                 ...state,
                 cartItems: loadLocalStorageData()
             }
-            
+        case actionTypes.INCREMENT_OR_DECREMENT_QTY: 
+            const filterProduct = state.cartItems.filter(product => product._id !== action.payload._id)
+            return {
+                ...state,
+                cartItems: [action.payload, ...filterProduct]
+            }
         default:
             return state
     }

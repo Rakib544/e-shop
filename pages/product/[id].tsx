@@ -15,7 +15,6 @@ const ProductDetails: React.FC = () => {
     }, [])
 
     const state = useSelector((state: RootStateOrAny) => {
-        console.log(state)
         return state.getProductDetails
     });
 

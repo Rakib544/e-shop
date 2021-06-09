@@ -22,3 +22,12 @@ export const loadDataFromLocalStorage = () => async (dispatch) => {
         type: actionTypes.LOAD_DATA_FROM_LOCAL_STORAGE
     })
 }
+
+export const incrementorDecrementQty = data => async(dispatch, getState) => {
+    dispatch({
+        type: actionTypes.INCREMENT_OR_DECREMENT_QTY,
+        payload: data
+    })
+
+    localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
+}

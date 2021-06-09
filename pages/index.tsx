@@ -21,6 +21,7 @@ export type Products = {
   url: string;
   wholePrice: string;
   _id: string;
+  qty?: number
 }
 
 export default function Home(): JSX.Element {
