@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import NavBar from "../components/Navbar/Navbar";
 
 const Shipping = () => {
+    const router = useRouter();
     return (
         <>
             <NavBar />
@@ -43,6 +45,7 @@ const Shipping = () => {
                     <button
                         type="submit"
                         className="px-5 py-3 bg-gray-800 text-white my-4"
+                        onClick={() => router.push('/payment')}
                     >
                         CONTINUE
                     </button>

@@ -4,10 +4,12 @@ import NavBar from '../components/Navbar/Navbar';
 import SingleCart from '../components/SingleCart/SingleCart';
 import { loadDataFromLocalStorage } from '../redux/actions/cartActions';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 
 const Cart: React.FC = () => {
 
+    const router = useRouter();
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(loadDataFromLocalStorage())
@@ -31,7 +33,12 @@ const Cart: React.FC = () => {
                     <div className="p-2 w-full sm:w-full lg:w-1/4">
                         <h2 className="text-lg font-bold">Sub-Total ({products?.length}) Items</h2>
                         <p className="text-lg mt-4 font-medium">${subTotal.toFixed(2)}</p>
-                        <button className="bg-gray-800 text-white w-full py-3 mt-4 text-xs tracking-wide">PROCEED TO CHECKOUT</button>
+                        <button 
+                            className="bg-gray-800 text-white w-full py-3 mt-4 text-xs tracking-wide"
+                            onClick={() => router.push('/shipping')}
+                        >
+                            PROCEED TO CHECKOUT
+                        </button>
                     </div>
                 </div>
 
