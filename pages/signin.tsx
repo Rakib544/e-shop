@@ -4,10 +4,12 @@ import { useForm } from "react-hook-form";
 import { handleSingInWithEmailAndPassword } from "../lib/auth";
 
 const SignIn = () => {
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         handleSingInWithEmailAndPassword(data.email, data.password)
     };
+    
     return (
         <>
             <NavBar />

@@ -4,18 +4,18 @@ export const handleCreateUserWithEmailAndPassword = (name: string, email: string
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(res => {
             updateName(name)
-            console.log(res)
         })
         .catch(err => console.log(err))
 }
 
 export const handleSingInWithEmailAndPassword = (email: string, password: string) => {
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    return firebase.auth().signInWithEmailAndPassword(email, password)
         .then(res => {
-            console.log(res)
+            const formattedData = formatUser(res.user)
+            return formatUser
         })
         .catch(err => {
-            console.log(err)
+            return err.message
         })
 }
 
@@ -24,19 +24,15 @@ const updateName = (name) => {
 
     user.updateProfile({
         displayName: name
-    }).then(() => {
-        console.log('name updated successfully')
-    }).catch((error) => {
-        console.log(error)
-    });
+    })
 }
 
 export const handleSignOut = () => {
     firebase.auth().signOut()
-    .then(res => {
-        console.log(res)
-    })
-    .catch(err => {
-        console.log(err)
-    })
 }
+
+export const formatUser = (user) => ({
+    email: user.email,
+    name: user.displayName,
+    photoUrl: user.photoURL,
+});
