@@ -24,7 +24,7 @@ const Register = () => {
                             type="text"
                             placeholder="Enter Name"
                             name="name"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -34,7 +34,7 @@ const Register = () => {
                             type="text"
                             placeholder="Enter Email"
                             name="email"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -44,7 +44,7 @@ const Register = () => {
                             type="password"
                             placeholder="Enter Password"
                             name="password"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <button

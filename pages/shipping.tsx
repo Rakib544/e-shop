@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 
 const Shipping = () => {
     const router = useRouter();
+    console.log(router)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)

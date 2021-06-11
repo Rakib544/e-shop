@@ -18,6 +18,8 @@ const Cart: React.FC = () => {
     const products = useSelector((state: RootStateOrAny) => state.cart.cartItems)
     const subTotal = products?.reduce((sum, product) => sum + (product.price * product.qty), 0)
 
+    const userData = useSelector((state: RootStateOrAny) => state.userInfo.userInfo);
+
     return (
         <>
             <NavBar />
@@ -35,7 +37,7 @@ const Cart: React.FC = () => {
                         <p className="text-lg mt-4 font-medium">${subTotal.toFixed(2)}</p>
                         <button 
                             className="bg-gray-800 text-white w-full py-3 mt-4 text-xs tracking-wide"
-                            onClick={() => router.push('/shipping')}
+                            onClick={() => router.push(userData.name ? '/shipping' : '/signin')}
                         >
                             PROCEED TO CHECKOUT
                         </button>

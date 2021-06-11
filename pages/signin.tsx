@@ -2,12 +2,15 @@ import Link from "next/link";
 import NavBar from "../components/Navbar/Navbar";
 import { useForm } from "react-hook-form";
 import { handleSingInWithEmailAndPassword } from "../lib/auth";
+import { useRouter } from "next/dist/client/router";
 
 const SignIn = () => {
 
+    const router = useRouter();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         handleSingInWithEmailAndPassword(data.email, data.password)
+        router.back();
     };
     
     return (
