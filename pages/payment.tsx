@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import NavBar from '../components/Navbar/Navbar';
 
-const Payment = () => {
+const Payment = (): JSX.Element => {
     const router = useRouter()
     return (
         <>

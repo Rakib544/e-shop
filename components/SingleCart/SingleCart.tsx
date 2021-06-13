@@ -7,10 +7,10 @@ import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 type Props = {
     product: Products
 }
-const SingleCart: React.FC<Props> = ({ product }) => {
+const SingleCart = ({ product }: Props) => {
     const dispatch = useDispatch();
 
-    const handleDecrement = () => {
+    const handleDecrement = (): void => {
         if (product.qty > 1) {
             const data = {
                 ...product,
@@ -20,7 +20,7 @@ const SingleCart: React.FC<Props> = ({ product }) => {
         }
     }
 
-    const handleIncrement = () => {
+    const handleIncrement = (): void => {
         const data = {
             ...product,
             qty: product.qty + 1

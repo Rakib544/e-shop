@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import NavBar from "../components/Navbar/Navbar";
 import { useForm } from "react-hook-form";
 
-const Shipping = () => {
+const Shipping = (): JSX.Element => {
     const router = useRouter();
     console.log(router)
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -26,7 +26,7 @@ const Shipping = () => {
                             type="text"
                             placeholder="Enter Address"
                             name="address"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -36,7 +36,7 @@ const Shipping = () => {
                             type="text"
                             placeholder="Enter City"
                             name="city"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -46,7 +46,7 @@ const Shipping = () => {
                             type="text"
                             placeholder="Enter Postal Code"
                             name="postalCode"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -56,7 +56,7 @@ const Shipping = () => {
                             type="text"
                             placeholder="Enter Country"
                             name="country"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <button

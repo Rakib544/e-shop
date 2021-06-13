@@ -19,7 +19,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function NavBar() {
+const NavBar = (): JSX.Element => {
 
     const dispatch = useDispatch();
 
@@ -91,3 +91,5 @@ export default function NavBar() {
         </Disclosure>
     )
 }
+
+export default NavBar;

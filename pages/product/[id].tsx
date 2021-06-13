@@ -6,7 +6,7 @@ import Preloader from '../../components/Preloader/Preloader';
 import { addToCart } from '../../redux/actions/cartActions';
 import { getProductDetails } from '../../redux/actions/productActions';
 
-const ProductDetails: React.FC = () => {
+const ProductDetails = (): JSX.Element => {
     const router = useRouter()
     const dispatch = useDispatch()
 
@@ -51,8 +51,8 @@ const ProductDetails: React.FC = () => {
                                             <p>Status</p>
                                             <p>{product.stock ? 'In Stock' : 'Out Of Stock'}</p>
                                         </div>
-                                        <button 
-                                            onClick={() => dispatch(addToCart(cartProduct))} 
+                                        <button
+                                            onClick={() => dispatch(addToCart(cartProduct))}
                                             className="bg-gray-900 text-white text-xs w-full py-3 mt-10 hover:bg-opacity-80 tracking-wide"
                                         >
                                             ADD TO CART

@@ -1,6 +1,18 @@
+type userData = {
+    email: string;
+    displayName: string;
+    photoURL: string;
+}
+
+type returnData = {
+    email: string;
+    name: string;
+    photoUrl: string;
+}
+
 import firebase from './firebase';
 
-export const handleCreateUserWithEmailAndPassword = (name: string, email: string, password: string) => {
+export const handleCreateUserWithEmailAndPassword = (name: string, email: string, password: string): void => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(res => {
             updateName(name)
@@ -19,7 +31,7 @@ export const handleSingInWithEmailAndPassword = (email: string, password: string
         })
 }
 
-const updateName = (name) => {
+const updateName = (name: string): void => {
     const user = firebase.auth().currentUser;
 
     user.updateProfile({
@@ -27,11 +39,11 @@ const updateName = (name) => {
     })
 }
 
-export const handleSignOut = () => {
+export const handleSignOut = (): void => {
     firebase.auth().signOut()
 }
 
-export const formatUser = (user) => ({
+export const formatUser = (user: userData): returnData => ({
     email: user.email,
     name: user.displayName,
     photoUrl: user.photoURL,

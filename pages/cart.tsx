@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 
-const Cart: React.FC = () => {
+const Cart = (): JSX.Element => {
 
     const router = useRouter();
     const dispatch = useDispatch();
@@ -28,14 +28,14 @@ const Cart: React.FC = () => {
                     <div className="px-0 sm:px-0 md:px-12 w-full sm:w-full md:w-3/4 lg:w-3/4">
                         {
                             products.length === 0
-                            ? <h3>You don't have any products on the cart. <Link href="/"><a className="hover:underline">Back to Home</a></Link></h3>
-                            : products?.map(product => <SingleCart product={product} key={product._id} />)
+                                ? <h3>You don't have any products on the cart. <Link href="/"><a className="hover:underline">Back to Home</a></Link></h3>
+                                : products?.map(product => <SingleCart product={product} key={product._id} />)
                         }
                     </div>
                     <div className="p-2 w-full sm:w-full lg:w-1/4">
                         <h2 className="text-lg font-bold">Sub-Total ({products?.length}) Items</h2>
                         <p className="text-lg mt-4 font-medium">${subTotal.toFixed(2)}</p>
-                        <button 
+                        <button
                             className="bg-gray-800 text-white w-full py-3 mt-4 text-xs tracking-wide"
                             onClick={() => router.push(userData.name ? '/shipping' : '/signin')}
                         >

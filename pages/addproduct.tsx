@@ -1,7 +1,7 @@
 import NavBar from "../components/Navbar/Navbar";
 import { useForm } from "react-hook-form";
 
-const AddProducts = () => {
+const AddProducts = (): JSX.Element => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
@@ -11,7 +11,7 @@ const AddProducts = () => {
             <NavBar />
             <div className="w-1/2 mx-auto mt-8">
                 <h1 className="text-4xl">ADD PRODUCT</h1>
-                <form 
+                <form
                     className="mt-4"
                     onSubmit={handleSubmit(onSubmit)}
                 >
@@ -22,7 +22,7 @@ const AddProducts = () => {
                             type="text"
                             placeholder="Enter Name"
                             name="name"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -32,7 +32,7 @@ const AddProducts = () => {
                             type="text"
                             placeholder="Price"
                             name="price"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -49,7 +49,7 @@ const AddProducts = () => {
                             type="text"
                             placeholder="Brand"
                             name="brand"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -59,7 +59,7 @@ const AddProducts = () => {
                             type="text"
                             placeholder="Count In Stock"
                             name="stock"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -69,7 +69,7 @@ const AddProducts = () => {
                             type="text"
                             placeholder="Description"
                             name="description"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <button

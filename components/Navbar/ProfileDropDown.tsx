@@ -6,7 +6,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const ProfileDropDown = () => {
+const ProfileDropDown = (): JSX.Element => {
     return (
         <Menu as="div" className="ml-3 relative">
             {({ open }) => (

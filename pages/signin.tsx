@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { handleSingInWithEmailAndPassword } from "../lib/auth";
 import { useRouter } from "next/dist/client/router";
 
-const SignIn = () => {
+const SignIn = (): JSX.Element => {
 
     const router = useRouter();
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,7 +12,7 @@ const SignIn = () => {
         handleSingInWithEmailAndPassword(data.email, data.password)
         router.back();
     };
-    
+
     return (
         <>
             <NavBar />
@@ -29,7 +29,7 @@ const SignIn = () => {
                             type="text"
                             placeholder="Enter Email"
                             name="email"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <div className="my-3">
@@ -39,7 +39,7 @@ const SignIn = () => {
                             type="password"
                             placeholder="Enter Password"
                             name="password"
-                            ref={register({required: true})}
+                            ref={register({ required: true })}
                         />
                     </div>
                     <button

@@ -3,7 +3,7 @@ import NavBar from "../components/Navbar/Navbar";
 import { useForm } from "react-hook-form";
 import { handleCreateUserWithEmailAndPassword } from "../lib/auth";
 
-const Register = () => {
+const Register = (): JSX.Element => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         handleCreateUserWithEmailAndPassword(data.name, data.email, data.password)
