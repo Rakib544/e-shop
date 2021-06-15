@@ -1,15 +1,19 @@
 import { useRouter } from "next/router";
 import NavBar from "../components/Navbar/Navbar";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { getShippingData } from "../redux/actions/userActions";
 
 const Shipping = (): JSX.Element => {
     const router = useRouter();
-    console.log(router)
+    const dispatch = useDispatch();
     const { register, handleSubmit, formState: { errors } } = useForm();
+
     const onSubmit = data => {
-        console.log(data)
+        dispatch(getShippingData(data))
         router.push('/payment')
     };
+
     return (
         <>
             <NavBar />

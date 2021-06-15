@@ -5,3 +5,10 @@ export const storeUserInfo = (payload) => {
         payload
     }
 }
+
+export const getShippingData = payload => {
+    return {
+        type: actionsType.GET_SHIPPING_DATA,
+        payload
+    }
+}
