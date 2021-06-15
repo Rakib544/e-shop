@@ -9,6 +9,25 @@ const PlaceOrder = (): JSX.Element => {
     const { address, postalCode, country, city } = shippingData;
 
     const subTotal = data.cart.cartItems?.reduce((sum:number, item):number => sum + (parseInt(item.price) * parseInt(item.qty)), 0)
+
+    const orderData = {
+        date: new Date().toDateString(),
+        total: subTotal + 25,
+        delivered: false,
+        products: data.cart.cartItems,
+        shippingData,
+        paymentMethod: 'stripe',
+        email: data.userInfo.userInfo.email
+    }
+
+    const handleClick = () => {
+        fetch('http://localhost:8080/addOrder', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(orderData)
+        })
+    }
+
     return (
         <>
             <NavBar />
@@ -60,7 +79,10 @@ const PlaceOrder = (): JSX.Element => {
                             <p>Total</p>
                             <p>${subTotal + 15 + 10}</p>
                         </div>
-                        <button className="w-full px-5 py-3 bg-gray-800 text-white my-4">
+                        <button 
+                            onClick={handleClick}
+                            className="w-full px-5 py-3 bg-gray-800 text-white my-4"
+                        >
                             PLACE ORDER
                         </button>
                     </div>
