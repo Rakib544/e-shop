@@ -1,10 +1,32 @@
 import NavBar from "../components/Navbar/Navbar";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import axios from "axios";
 
 const AddProducts = (): JSX.Element => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [imageURL, setImageURL] = useState({})
+
+    const handleImageUpload = e => {
+        setImageURL(null)
+        const imageData = new FormData();
+        imageData.set('key', 'd17139582dad6f2a6f60bbc19e0dbd5e');
+        imageData.append('image', e.target.files[0]);
+
+        axios.post('https://api.imgbb.com/1/upload', imageData)
+            .then(res => setImageURL(res.data.data.display_url))
+            .catch(err => console.log(err))
+    }
+
     const onSubmit = data => {
-        console.log(data)
+        if (imageURL) {
+            const product = { ...data, imageURL }
+            fetch('http://localhost:8080/addProduct', {
+                method: "POST",
+                headers: { "Content-type": 'application/json' },
+                body: JSON.stringify(product)
+            })
+        }
     };
     return (
         <>
@@ -40,6 +62,7 @@ const AddProducts = (): JSX.Element => {
                         <input
                             className="block w-full px-4 py-3 border-0 focus:outline-none bg-gray-50 mt-2"
                             type="file"
+                            onChange={handleImageUpload}
                         />
                     </div>
                     <div className="my-3">
@@ -76,7 +99,7 @@ const AddProducts = (): JSX.Element => {
                         type="submit"
                         className="px-5 py-3 bg-gray-800 text-white my-4"
                     >
-                        SAVE
+                        {imageURL ? 'SAVE': 'Wait...'}
                     </button>
                 </form>
             </div>

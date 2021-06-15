@@ -34,12 +34,12 @@ const ProductDetails = (): JSX.Element => {
                         <div className="h:screen container-lg px-8 py-14 mx-auto">
                             <div className="flex flex-wrap justify-between m-4">
                                 <div className="p-2 sm:w-1/2 lg:w-1/3" >
-                                    <img className="w-full h-full" src={product?.img} alt={product.name} />
+                                    <img className="w-full h-full" src={product?.imageURL} alt={product.name} />
                                 </div>
                                 <div className="p-2 sm:w-1/2 lg:w-1/3" >
                                     <h2 className="text-lg font-medium tracking-wide py-4">{product.name}</h2>
                                     <h4 className="py-4 text-md tracking-wide">Price: ${product.price}</h4>
-                                    <p>{product.features?.map((feature, index) => <li key={index}>{feature.description} - {feature.value}</li>)}</p>
+                                   <p>{product.description}</p>
                                 </div>
                                 <div className="p-2 sm:w-1/2 md:w-full lg:w-1/4 shadow-sm" >
                                     <div className="p-4">

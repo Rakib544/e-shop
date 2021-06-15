@@ -7,19 +7,10 @@ import { SingleCard } from '../components/SingleCard/SingleCard';
 import { getProducts } from '../redux/actions/productActions';
 
 export type Products = {
-  features: {}[];
-  img: string;
-  key: string;
+  imageURL: string;
   name: string;
   price: number;
-  priceFraction: string;
-  seller: string;
-  shipping: number;
-  star: number;
-  starCount: number;
   stock: number;
-  url: string;
-  wholePrice: string;
   _id: string;
   qty?: number
 }

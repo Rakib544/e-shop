@@ -5,7 +5,7 @@ export const getProducts = () => async(dispatch:Dispatch) => {
     try{
         dispatch({type: actionTypes.GET_PRODUCTS_REQUEST})
 
-        const res = await fetch('https://murmuring-beyond-43171.herokuapp.com/products')
+        const res = await fetch('http://localhost:8080/allProducts')
         const data = await res.json();
         dispatch({
             type: actionTypes.GET_PRODUCTS_SUCCESS,
@@ -25,7 +25,7 @@ export const getProductDetails = id => async (dispatch) => {
     try{
         dispatch({type: actionTypes.GET_PRODUCT_DETAILS_REQUEST})
 
-        const res = await fetch(`https://murmuring-beyond-43171.herokuapp.com/product/${id}`)
+        const res = await fetch(`http://localhost:8080/findSingleProduct/${id}`)
         const data = await res.json()
         
         dispatch({

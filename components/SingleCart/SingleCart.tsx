@@ -31,7 +31,7 @@ const SingleCart = ({ product }: Props) => {
     return (
         <div className="flex justify-between items-center flex-wrap mt-2">
             <div className="w-1/6">
-                <img src={product.img} alt={product.name} />
+                <img src={product.imageURL} alt={product.name} />
             </div>
             <div className="w-1/3 text-xs md:text-base font-medium">
                 {product.name.slice(0, 50)}
