@@ -8,7 +8,7 @@ const userOrders = () => {
     
     useEffect(() => {
         if (email) {
-            fetch('http://localhost:8080/userOrders', {
+            fetch('https://desolate-waters-34842.herokuapp.com/userOrders', {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify({ email })

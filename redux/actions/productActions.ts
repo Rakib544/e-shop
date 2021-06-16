@@ -5,7 +5,7 @@ export const getProducts = () => async(dispatch:Dispatch) => {
     try{
         dispatch({type: actionTypes.GET_PRODUCTS_REQUEST})
 
-        const res = await fetch('http://localhost:8080/allProducts')
+        const res = await fetch('https://desolate-waters-34842.herokuapp.com/allProducts')
         const data = await res.json();
         dispatch({
             type: actionTypes.GET_PRODUCTS_SUCCESS,
@@ -25,7 +25,7 @@ export const getProductDetails = id => async (dispatch) => {
     try{
         dispatch({type: actionTypes.GET_PRODUCT_DETAILS_REQUEST})
 
-        const res = await fetch(`http://localhost:8080/findSingleProduct/${id}`)
+        const res = await fetch(`https://desolate-waters-34842.herokuapp.com/findSingleProduct/${id}`)
         const data = await res.json()
         
         dispatch({

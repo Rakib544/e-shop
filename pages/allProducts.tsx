@@ -12,7 +12,7 @@ const allProducts = () => {
 
     const handleDeleteProduct = (id: string) => {
         setClicked(clicked + 1);
-        fetch('http://localhost:8080/delete', {
+        fetch('https://desolate-waters-34842.herokuapp.com/delete', {
             method: 'DELETE',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ id })

@@ -39,13 +39,13 @@ const ProfileDropDown = ({ email }: Props): JSX.Element => {
     const [adminList, setAdminList] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/allAdmins')
+        fetch('https://desolate-waters-34842.herokuapp.com/allAdmins')
             .then(res => res.json())
             .then(data => setAdminList(data))
     }, [])
 
     const isAdmin = adminList.find(admin => admin.data.email === email);
-
+    console.log(isAdmin)
     return (
         <Menu as="div" className="ml-3 relative">
             {({ open }) => (

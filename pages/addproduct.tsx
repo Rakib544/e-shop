@@ -21,7 +21,7 @@ const AddProducts = (): JSX.Element => {
     const onSubmit = data => {
         if (imageURL) {
             const product = { ...data, imageURL }
-            fetch('http://localhost:8080/addProduct', {
+            fetch('https://desolate-waters-34842.herokuapp.com/addProduct', {
                 method: "POST",
                 headers: { "Content-type": 'application/json' },
                 body: JSON.stringify(product)
