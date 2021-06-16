@@ -4,13 +4,24 @@ import { getProducts } from "../redux/actions/productActions";
 import NavBar from "../components/Navbar/Navbar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useState } from "react";
 
 const allProducts = () => {
     const dispatch = useDispatch();
+    const [clicked, setClicked] = useState<number>(1)
+
+    const handleDeleteProduct = (id: string) => {
+        setClicked(clicked + 1);
+        fetch('http://localhost:8080/delete', {
+            method: 'DELETE',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ id })
+        });
+    }
 
     useEffect(() => {
         dispatch(getProducts())
-    }, [dispatch])
+    }, [dispatch, clicked])
 
     const data = useSelector((state: RootStateOrAny) => state.getProducts)
     const { loading, products } = data;
@@ -60,8 +71,12 @@ const allProducts = () => {
                                     <p>{product.brand}</p>
                                 </div>
                                 <div className="w-1/7 text-xs md:text-base">
-                                    <FontAwesomeIcon icon={faEdit} className="mr-2 cursor-pointer"/>
-                                    <FontAwesomeIcon icon={faTrash} className="cursor-pointer"/>
+                                    <FontAwesomeIcon icon={faEdit} className="mr-2 cursor-pointer" />
+                                    <FontAwesomeIcon
+                                        icon={faTrash}
+                                        className="cursor-pointer"
+                                        onClick={() => handleDeleteProduct(product._id)}
+                                    />
                                 </div>
                             </div>
                         ))
