@@ -97,7 +97,7 @@ const AddProducts = (): JSX.Element => {
                     </div>
                     <button
                         type="submit"
-                        className="px-5 py-3 bg-gray-800 text-white my-4"
+                        className="px-5 py-3 bg-gray-800 text-white my-4 rounded"
                     >
                         {imageURL ? 'SAVE': 'Wait...'}
                     </button>

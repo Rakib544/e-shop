@@ -2,9 +2,26 @@ import React from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react'
 import { handleSignOut } from '../../lib/auth';
+import Link from 'next/link';
+
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
+
+const adminOption = [
+    {
+        link: '/userOrders',
+        text: 'User Order'
+    },
+    {
+        link: '/addproduct',
+        text: 'Add Product'
+    },
+    {
+        link: '/allProducts',
+        text: 'Manage Products'
+    },
+]
 
 const ProfileDropDown = (): JSX.Element => {
     return (
@@ -35,19 +52,24 @@ const ProfileDropDown = (): JSX.Element => {
                             static
                             className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                         >
-                            <Menu.Item>
-                                {({ active }) => (
-                                    <a
-                                        href="#"
-                                        className={classNames(
-                                            active ? 'bg-gray-100' : '',
-                                            'block px-4 py-2 text-sm text-gray-700'
+                            {
+                                adminOption?.map(option => (
+                                    <Menu.Item>
+                                        {({ active }) => (
+                                            <Link href={option.link}>
+                                                <a
+                                                    className={classNames(
+                                                        active ? 'bg-gray-100' : '',
+                                                        'block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                                                    )}
+                                                >
+                                                    {option.text}
+                                                </a>
+                                            </Link>
                                         )}
-                                    >
-                                        Your Profile
-                                    </a>
-                                )}
-                            </Menu.Item>
+                                    </Menu.Item>
+                                ))
+                            }
                             <Menu.Item>
                                 {({ active }) => (
                                     <button

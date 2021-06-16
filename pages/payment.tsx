@@ -13,7 +13,7 @@ const Payment = (): JSX.Element => {
                 <input type="radio" checked /> Stripe
                 <button
                     onClick={() => router.push('/placeorder')}
-                    className="block px-5 py-3 bg-gray-800 text-white my-4"
+                    className="block px-5 py-3 bg-gray-800 text-white my-4 rounded"
                 >
                     CONTINUE
                 </button>

@@ -81,7 +81,7 @@ const PlaceOrder = (): JSX.Element => {
                         </div>
                         <button 
                             onClick={handleClick}
-                            className="w-full px-5 py-3 bg-gray-800 text-white my-4"
+                            className="w-full px-5 py-3 bg-gray-800 text-white my-4 rounded"
                         >
                             PLACE ORDER
                         </button>

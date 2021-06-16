@@ -8,17 +8,6 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { storeUserInfo } from '../../redux/actions/userActions';
 import ProfileDropDown from './ProfileDropDown';
 
-const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-]
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
 const NavBar = (): JSX.Element => {
 
     const dispatch = useDispatch();
@@ -68,24 +57,6 @@ const NavBar = (): JSX.Element => {
                             </div>
                         </div>
                     </div>
-
-                    <Disclosure.Panel className="sm:hidden">
-                        <div className="px-2 pt-2 pb-3 space-y-1">
-                            {navigation.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    className={classNames(
-                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                        'block px-3 py-2 rounded-md text-base font-medium'
-                                    )}
-                                    aria-current={item.current ? 'page' : undefined}
-                                >
-                                    {item.name}
-                                </a>
-                            ))}
-                        </div>
-                    </Disclosure.Panel>
                 </>
             )}
         </Disclosure>
