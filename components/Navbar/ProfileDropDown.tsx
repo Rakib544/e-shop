@@ -19,6 +19,10 @@ const adminOption = [
         link: '/allProducts',
         text: 'Manage Products'
     },
+    {
+        link: '/allorders',
+        text: 'All Orders'
+    }
 ]
 
 const userOption = [

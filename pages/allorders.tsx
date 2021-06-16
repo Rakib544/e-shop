@@ -1,23 +1,16 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { RootStateOrAny, useSelector } from "react-redux";
 import NavBar from "../components/Navbar/Navbar";
-const userOrders = () => {
+
+const AllOrders = () => {
     const [orders, setOrders] = useState([]);
-    const email = useSelector((state: RootStateOrAny) => state.userInfo.userInfo.email);
     
     useEffect(() => {
-        if (email) {
-            fetch('http://localhost:8080/userOrders', {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ email })
-            })
-                .then(res => res.json())
-                .then(data => setOrders(data))
-        }
-    }, [email])
-    console.log(orders)
+        fetch('http://localhost:8080/allOrderList')
+        .then(res => res.json())
+        .then(data => setOrders(data))
+    }, [])
+
     return (
         <>
             <NavBar />
@@ -71,4 +64,4 @@ const userOrders = () => {
     );
 };
 
-export default userOrders;
+export default AllOrders;
