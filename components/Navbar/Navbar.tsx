@@ -26,6 +26,7 @@ const NavBar = (): JSX.Element => {
     const router = useRouter();
 
     const userData = useSelector((state: RootStateOrAny) => state.userInfo.userInfo);
+   
     return (
         <Disclosure as="nav" className="bg-gray-800 py-3">
             {({ open }) => (
@@ -52,7 +53,7 @@ const NavBar = (): JSX.Element => {
                                                 <span>Login</span>
                                             </button>
                                         )
-                                        : <ProfileDropDown />
+                                        : <ProfileDropDown email={userData.email}/>
                                 }
                             </div>
                         </div>

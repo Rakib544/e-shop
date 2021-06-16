@@ -14,7 +14,7 @@ const userOrders = () => {
                 body: JSON.stringify({ email })
             })
                 .then(res => res.json())
-                .then(data => setOrders(data))
+                .then(data => setOrders(data.email))
         }
     }, [email])
 

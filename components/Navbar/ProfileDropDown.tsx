@@ -3,16 +3,14 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react'
 import { handleSignOut } from '../../lib/auth';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 const adminOption = [
-    {
-        link: '/userOrders',
-        text: 'User Order'
-    },
     {
         link: '/addproduct',
         text: 'Add Product'
@@ -23,7 +21,27 @@ const adminOption = [
     },
 ]
 
-const ProfileDropDown = (): JSX.Element => {
+const userOption = [
+    {
+        link: '/userOrders',
+        text: 'User Order'
+    }
+]
+type Props = {
+    email: string
+}
+
+const ProfileDropDown = ({ email }: Props): JSX.Element => {
+    const [adminList, setAdminList] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/allAdmins')
+            .then(res => res.json())
+            .then(data => setAdminList(data))
+    }, [])
+
+    const isAdmin = adminList.find(admin => admin.data.email === email);
+
     return (
         <Menu as="div" className="ml-3 relative">
             {({ open }) => (
@@ -52,23 +70,51 @@ const ProfileDropDown = (): JSX.Element => {
                             static
                             className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                         >
-                            {
-                                adminOption?.map(option => (
-                                    <Menu.Item>
-                                        {({ active }) => (
-                                            <Link href={option.link}>
-                                                <a
-                                                    className={classNames(
-                                                        active ? 'bg-gray-100' : '',
-                                                        'block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                            {isAdmin
+                                ? (
+                                    <>
+                                        {
+                                            adminOption?.map(option => (
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <Link href={option.link}>
+                                                            <a
+                                                                className={classNames(
+                                                                    active ? 'bg-gray-100' : '',
+                                                                    'block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                                                                )}
+                                                            >
+                                                                {option.text}
+                                                            </a>
+                                                        </Link>
                                                     )}
-                                                >
-                                                    {option.text}
-                                                </a>
-                                            </Link>
-                                        )}
-                                    </Menu.Item>
-                                ))
+                                                </Menu.Item>
+                                            ))
+                                        }
+                                    </>
+                                )
+                                : (
+                                    <>
+                                        {
+                                            userOption?.map(option => (
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <Link href={option.link}>
+                                                            <a
+                                                                className={classNames(
+                                                                    active ? 'bg-gray-100' : '',
+                                                                    'block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                                                                )}
+                                                            >
+                                                                {option.text}
+                                                            </a>
+                                                        </Link>
+                                                    )}
+                                                </Menu.Item>
+                                            ))
+                                        }
+                                    </>
+                                )
                             }
                             <Menu.Item>
                                 {({ active }) => (
